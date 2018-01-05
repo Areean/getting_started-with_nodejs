@@ -1,57 +1,80 @@
 //requirements
-const express=require('express')
-const bodyParser=require('body-parser')
+const express=require('express');
+const bodyParser=require('body-parser');
+let config = require('./config/config');
+let logger=require('./services/logger');
+let users=require('./db/user.json');
+const app = express();
 
-let config = require('./config/config')
-let logger=require('./services/logger')
-const app = express()
+
+let myLogger = (req,res,next)=>{
+    logger.info(`access to the ${req.originalUrl} route`);
+    next();
+};
+app.use('*',myLogger);
 
 
 
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
-const users=[{
-    name:'John'},
-    {name:'Jane'
-}]
 
 app.get('/',(req,res)=>{
-    logger.log('access to the API route')
+    logger.info('access to the API route');
     res.sendFile('index.html',{root:'./views/'});
-})
+});
 
 app.get('/users',(req,res)=>{
-    res.send(users)
-})
+    res.send(users);
+});
 
 app.post('/users', (req, res) => {
-    users.push(req.body)
-    res.setHeader('content-type', 'text/plain')
-    res.write('users changed to:\n')
-    res.write(JSON.stringify(users, null, 2))
-    res.write('\n')
-    res.write('you added this:\n')
-    res.end(JSON.stringify(req.body, null, 2))
+    users.push(req.body);
+    res.setHeader('content-type', 'text/plain');
+    res.write('users changed to:\n');
+    res.write(JSON.stringify(users, null, 2));
+    res.write('\n');
+    res.write('you added this:\n');
+    res.end(JSON.stringify(req.body, null, 2));
 
-})
+});
 
 app.get('/about', (req, res) => {
-    res.sendFile('about.html',{root:'./views/'})
-})
+    res.sendFile('about.html',{root:'./views/'});
+});
 app.get('/contact', (req, res) => {
-    res.sendFile('contact.html', { root: './views/' })
-})
+    res.sendFile('contact.html', { root: './views/' });
+});
+
+app.post('/log', (req, res) => {
+    let message=req.body.message;
+    logger.log(message);
+    res.send('a new log stored successfully');
+});
+
+
+app.post('/login',(req,res)=>{
+    let username=req.body.username;
+    let password=req.body.password;
+
+    users.forEach((user) => {
+        if (user.username === username && user.password === password){
+            res.json({isAuthenticated: true}) ;
+            return;
+        }
+    });
+    res.json({ isAuthenticated: false });
+
+});
 
 
 //listen app
 app.listen(config.port, (err) => {
     if (err) {
-        return console.log('sth bad happened!', err);
+        return logger.error('sth bad happened!', err);
     }
-    console.log(`${config.applicationName} is listening on port ${config.port}`)
+    logger.info(`${config.applicationName} is listening on port ${config.port}`);
 });
-
 
 
 

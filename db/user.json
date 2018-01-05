@@ -1,0 +1,40 @@
+[{
+    "id":1,
+    "email":"amirtavakoli@outlook.com",
+    "gender":"male",
+    "username":"areean",
+    "password":"password",
+    "bio":"Hardcore coffee nerd and twitter junkie. Proud gamer.",
+    "first_name":"Amir",
+    "last_name":"Tavakoli",
+    "favoriteMovies":[{
+        "Title":"The Book of Eli",
+        "Genre":"Action, Adventure, Drama",
+        "Director": "Albert Hughes, Allen Hughes",
+        "Actors": "Denzel Washington, Gary Oldman, Mila Kunis, Ray Stevenson",
+        "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BNTE1OWI1YzgtZjEyMy00MjQ4LWE0NWMtYTNhYjc0ZDQ3ZGRkXkEyXkFqcGdeQXVyNDQ2MTMzODA@._V1_SX300.jpg", 
+        "Website": "http://thebookofeli.warnerbros.com/"
+    },{
+
+    }]
+},
+{
+    "id": 2,
+    "email": "varesh0@gmail.com",
+    "gender": "female",
+    "bio": "Hardcore coffee nerd and twitter junkie. Proud gamer.",
+    "username": "varesh",
+    "password": "password",
+    "first_name": "Shaqayeq",
+    "last_name": "Azami"
+},
+{
+    "id": 3,
+    "email": "varesh0@gmail.com",
+    "gender": "female",
+    "bio": "Hardcore coffee nerd and twitter junkie. Proud gamer.",
+    "username": "ali",
+    "password": "password",
+    "first_name": "Shaqayeq",
+    "last_name": "Azami"
+}]
