@@ -1,0 +1,25 @@
+{
+    "name": "getting_started_with_nodejs",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "bcrypt": "^1.0.3",
+        "body-parser": "^1.18.2",
+        "connect-redis": "^3.3.3",
+        "express": "^4.16.2",
+        "express-handlebars": "^3.0.0",
+        "express-session": "^1.15.6",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0"
+    },
+    "devDependencies": {},
+    "author": {
+        "name": "Amir Tavakoli",
+        "email": "amirtavakoli@outlook.com"
+    },
+    "license": "ISC"
+}
