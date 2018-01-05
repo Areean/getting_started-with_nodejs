@@ -1,8 +1,9 @@
 //requirements
 const express=require('express')
-const bodyParser=require('body-parser');
-let config = require('./config/config')
+const bodyParser=require('body-parser')
 
+let config = require('./config/config')
+let logger=require('./services/logger')
 const app = express()
 
 
@@ -14,8 +15,9 @@ const users=[{
     name:'John'},
     {name:'Jane'
 }]
- 
+
 app.get('/',(req,res)=>{
+    logger.log('access to the API route')
     res.sendFile('index.html',{root:'./views/'});
 })
 
@@ -32,9 +34,6 @@ app.post('/users', (req, res) => {
     res.write('you added this:\n')
     res.end(JSON.stringify(req.body, null, 2))
 
-  
-    
-  
 })
 
 app.get('/about', (req, res) => {
